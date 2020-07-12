@@ -158,6 +158,11 @@
     <script>
       const panels = document.querySelectorAll(".panel");
       function toggleOpen() {
+        const openedPanel = document.querySelector(".open");
+        if (openedPanel) {
+          openedPanel.classList.remove("open");
+        }
+
         this.classList.toggle("open");
       }
 
