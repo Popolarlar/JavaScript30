@@ -1,19 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>HTML5 Canvas</title>
-</head>
-<body>
-<canvas id="draw" width="800" height="800"></canvas>
-<script>
-</script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML5 Canvas</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Rainbow Crayon</h1>
+      <div class="strokeVariable">
+        <input type="range" id="strokeWidth" min="1" max="100" value="50" />
+        <input type="color" id="strokeColor" value="#f5cae5" />
+        <input type="button" id="strokeRainbow" value="Rainbow" />
+        <input type="button" id="clear" value="Clear" />
+      </div>
+      <canvas id="draw" width="800" height="800"></canvas>
+    </div>
+    <script>
+      const canvas = document.querySelector("#draw");
 
-<style>
-  html, body {
-    margin: 0;
-  }
-</style>
+      // MJ: Change the canvas size while resizing
+      // canvas.width = window.innerWidth;
+      // canvas.hight = window.innerHeight;
 
-</body>
+      // MJ: Create a drawing object
+      // https://www.w3schools.com/graphics/canvas_reference.asp
+      const ctx = canvas.getContext("2d");
+      ctx.strokeStyle = "#f5cae5";
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      ctx.lineWidth = 50;
+      // ctx.globalCompositeOperation = "multiply";
+
+      let isDrawing = false;
+      let lastX,
+        lastY = 0;
+      let hue = 0;
+      let direction = true;
+      let rainbow = true;
+
+      const stokeWidth = document.querySelector("#strokeWidth");
+      stokeWidth.addEventListener("change", () => {
+        ctx.lineWidth = event.target.value;
+      });
+
+      const stokeColor = document.querySelector("#strokeColor");
+      stokeColor.addEventListener("change", () => {
+        rainbow = false;
+        ctx.strokeStyle = event.target.value;
+      });
+
+      const strokeRainbow = document.querySelector("#strokeRainbow");
+      strokeRainbow.addEventListener("click", () => {
+        rainbow = true;
+        hue = 0;
+      });
+
+      const clear = document.querySelector("#clear");
+      clear.addEventListener("click", () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      function draw(e) {
+        if (isDrawing) {
+          console.log(`drawing (${event.clientX}, ${event.clientY})`);
+
+          // Set stroke color
+          if (rainbow) {
+            ctx.strokeStyle = `hsl(${hue},100%, 80%)`;
+          }
+
+          // Set the path from last x,y to current x,y
+          ctx.beginPath();
+          ctx.moveTo(lastX, lastY); // Start from
+          ctx.lineTo(event.offsetX, event.offsetY); // Go to
+          ctx.stroke();
+
+          // Update the last x,y
+          [lastX, lastY] = [event.offsetX, event.offsetY];
+
+          // Update the color
+          if (rainbow) {
+            hue++;
+            if (hue > 360) {
+              hue = 0;
+            }
+          }
+
+          // Update the stroke width
+          if (
+            ctx.lineWidth > stokeWidth.value ||
+            ctx.lineWidth > stokeWidth.getAttribute("max") ||
+            ctx.lineWidth <= stokeWidth.getAttribute("min")
+          ) {
+            direction = !direction;
+          }
+
+          if (direction) {
+            ctx.lineWidth++;
+          } else {
+            ctx.lineWidth--;
+          }
+        }
+      }
+
+      canvas.addEventListener("mousedown", () => {
+        isDrawing = true;
+        // Set the start point from the mouse down position
+        [lastX, lastY] = [event.offsetX, event.offsetY];
+      });
+      canvas.addEventListener("mousemove", draw);
+      canvas.addEventListener("mouseup", () => {
+        isDrawing = false;
+      });
+      canvas.addEventListener("mouseout", () => {
+        isDrawing = false;
+      });
+    </script>
+
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      input {
+        border-radius: 12px;
+        cursor: pointer;
+        outline: none;
+      }
+
+      input:hover {
+        bottom: 2px;
+        right: 2px;
+      }
+
+      input[type="range"] {
+        -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+        width: 100%; /* Specific width is required for Firefox. */
+        background: transparent; /* Otherwise white in Chrome */
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+      }
+      input[type="range"]:focus {
+        outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+      }
+      input[type="range"]::-ms-track {
+        width: 100%;
+        cursor: pointer;
+
+        /* Hides the slider so custom styles can be added */
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        padding: 5%;
+        color: white;
+        background-color: #f5cae5;
+        padding: 12px 12px;
+        overflow: hidden;
+      }
+
+      canvas {
+        border: gainsboro 2px solid;
+        background-color: white;
+      }
+      .strokeVariable {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .strokeVariable > * {
+        /* flex: 1; */
+        margin: 10px;
+        width: 100px;
+      }
+
+      #strokeWidth {
+        -webkit-appearance: none;
+        height: 15px;
+        border-radius: 5px;
+        background: white;
+        outline: none;
+        /* opacity: 0.7; */
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
+      }
+
+      /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+      #strokeWidth::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        border-radius: 50%;
+        background: #f5cae5;
+        border: 3px solid white;
+        box-shadow: 2px 2px 4px 0px rgb(139, 134, 134);
+        cursor: pointer; /* Cursor on hover */
+      }
+
+      #strokeWidth::-moz-range-thumb {
+        width: 25px; /* Set a specific slider handle width */
+        height: 25px; /* Slider handle height */
+        border-radius: 50%;
+        background: #f5cae5;
+        border: 3px solid white;
+        box-shadow: 2px 2px 4px 0px rgb(139, 134, 134);
+        cursor: pointer; /* Cursor on hover */
+      }
+
+      #strokeColor {
+        /* background: white; */
+        background: white;
+        border: none;
+        box-shadow: 2px 2px 4px 0px rgb(139, 134, 134);
+      }
+
+      input[type="button"] {
+        position: relative;
+        border: 3px solid white;
+        box-shadow: 2px 2px 4px 0px rgb(139, 134, 134);
+        cursor: pointer;
+      }
+
+      #strokeRainbow {
+        color: white;
+        background: linear-gradient(to right, red, yellow, blue);
+        border: 3px solid white;
+      }
+
+      #clear {
+        color: white;
+        background: none;
+        border: 3px solid white;
+      }
+    </style>
+  </body>
 </html>
