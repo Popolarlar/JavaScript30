@@ -99,35 +99,31 @@
     </div>
 
     <script>
-      // const checkBoxes = document.querySelectorAll("input[type=checkbox]");
-      const checkBoxes = [...document.querySelectorAll("input[type=checkbox]")];
+      const checkBoxes = document.querySelectorAll("input[type=checkbox]");
       let lastChecked;
-      let isShiftPressed = false;
 
+      // The change event doesn't have keyCode property, use click event instead
       checkBoxes.forEach((checkBox) =>
-        checkBox.addEventListener("change", onChangeCheckBox)
+        checkBox.addEventListener("click", handleCheck)
       );
 
-      function onChangeCheckBox() {
-        if (this.checked) {
-          console.log("Check");
-          if (isShiftPressed) {
-            console.log("Check everything in the between");
-          }
-          lastChecked = this;
-          console.log(lastChecked);
-        }
-      }
+      function handleCheck(e) {
+        let inBetween = false;
+        if (e.shiftKey && this.checked) {
+          console.log("Check everything in the between");
+          checkBoxes.forEach((checkBox) => {
+            if (checkBox === lastChecked || checkBox === this) {
+              // So that can be uses in both forward and backward
+              inBetween = !inBetween;
+            }
 
-      addEventListener("keydown", onKeyPressed);
-      addEventListener("keyup", onKeyReleased);
-      function onKeyPressed(e) {
-        if (e.shiftKey) {
-          isShiftPressed = true;
+            if (inBetween) {
+              checkBox.checked = true;
+            }
+          });
         }
-      }
-      function onKeyReleased(e) {
-        isShiftPressed = false;
+        // Update the last checked input
+        lastChecked = this;
       }
     </script>
   </body>
