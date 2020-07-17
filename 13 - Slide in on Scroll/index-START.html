@@ -238,31 +238,60 @@
         };
       }
 
-      const images = document.querySelectorAll("img");
-
+      // const images = document.querySelectorAll("img");
+      //
       // https://usefulangle.com/post/113/javascript-detecting-element-visible-during-scroll
-      var observer = new IntersectionObserver(
-        function (entries) {
-          // isIntersecting is true when element and viewport are overlapping
-          // isIntersecting is false when element and viewport don't overlap
-          entries.forEach((entry) => {
-            if (entry.isIntersecting === true) {
-              console.log("Element has just become visible in screen");
-              entry.target.classList.add("active");
-            }
+      // var observer = new IntersectionObserver(
+      //   function (entries) {
+      //     // isIntersecting is true when element and viewport are overlapping
+      //     // isIntersecting is false when element and viewport don't overlap
+      //     entries.forEach((entry) => {
+      //       if (entry.isIntersecting === true) {
+      //         console.log("Element has just become visible in screen");
+      //         entry.target.classList.add("active");
+      //       }
 
-            if (entry.isIntersecting === false) {
-              console.log("Element has just left visible screen");
-              entry.target.classList.remove("active");
-            }
-          });
-        },
-        { threshold: [0.2] }
-      );
+      //       if (entry.isIntersecting === false) {
+      //         console.log("Element has just left visible screen");
+      //         entry.target.classList.remove("active");
+      //       }
+      //     });
+      //   },
+      //   { threshold: [0.3] }
+      // );
 
-      images.forEach((img) => {
-        observer.observe(img);
-      });
+      // images.forEach((img) => {
+      //   observer.observe(img);
+      // });
+
+      const sliderImages = document.querySelectorAll("img");
+
+      // Use debounce to reduce the event amount which can cause performance issue
+      window.addEventListener("scroll", debounce(checkSlider));
+
+      function checkSlider(e) {
+        sliderImages.forEach((sliderImage) => {
+          // 30% Through the image
+          const slideInAt =
+            window.scrollY + window.innerHeight - sliderImage.height * 0.3;
+          // 30% past the image
+          const slideOutAt = window.scrollY + sliderImage.height * 0.3;
+
+          // The top of the image
+          const imageTop = sliderImage.offsetTop;
+          // The bottom of the image
+          const imageBottom = imageTop + sliderImage.height;
+
+          const isScrolledShown = slideInAt > imageTop;
+          const isScrolledPast = slideOutAt > imageBottom;
+
+          if (isScrolledShown && !isScrolledPast) {
+            sliderImage.classList.add("active");
+          } else {
+            sliderImage.classList.remove("active");
+          }
+        });
+      }
     </script>
 
     <style>
