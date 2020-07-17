@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Key Detection</title>
-  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
-</head>
-<body>
-<script>
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script
+      type="text/javascript"
+      src="https://www.cornify.com/js/cornify.js"
+    ></script>
+  </head>
+  <body>
+    <script>
+      const pressed = [];
+      const secretCode = "warren";
+      window.addEventListener("keyup", (e) => {
+        pressed.push(e.key);
+
+        // array.splice(index, howmany, item1, ....., itemX)
+        // https://www.w3schools.com/jsref/jsref_splice.asp
+        // index: Required. An integer that specifies at what position to add/remove items, Use negative values to specify the position from the end of the array
+        // howmany: Optional. The number of items to be removed. If set to 0, no items will be removed
+
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+
+        console.log(pressed);
+
+        if (pressed.join("").includes(secretCode)) {
+          console.log("You found me!!");
+          cornify_add();
+        }
+      });
+    </script>
+  </body>
 </html>
