@@ -188,20 +188,25 @@
       const videoList = [...videos];
 
       // The +time is used to cast the time to a number.
-      function reduceToSecond(acc, time) {
-        return acc * 60 + +time;
+      function stringToSecond(acc, time) {
+        return acc * 60 + parseFloat(time);
       }
 
-      let total = 0;
-      videoList.forEach(
-        (video) =>
-          (total += video.dataset.time.split(":").reduce(reduceToSecond, 0))
-      );
+      function totalSeconds(acc, sec) {
+        return acc + sec;
+      }
 
-      function secondToTime(sec) {
-        const s = sec % 60;
-        const m = ((sec - s) % 3600) / 60;
-        const h = (sec - s - m * 60) / 3600;
+      const total = videoList
+        .map((video) => video.dataset.time.split(":").reduce(stringToSecond, 0))
+        .reduce(totalSeconds, 0);
+
+      function secondToTime(seconds) {
+        // const s = seconds % 60;
+        // const m = ((seconds - s) % 3600) / 60;
+        // const h = (seconds - s - m * 60) / 3600;
+        const h = Math.floor(seconds / 3600);
+        const m = Math.floor((seconds - h * 3600) / 60);
+        const s = (seconds - h * 3600 - m * 60) % 60;
 
         return h > 0 ? `${h}:${m}:${s}` : `${m}:${s}`;
       }
