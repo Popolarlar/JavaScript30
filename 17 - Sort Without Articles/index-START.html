@@ -65,24 +65,32 @@
 
       bandList.innerHTML = bands
         .sort((a, b) => {
-          const tempA = a
-            .replace("The ", "")
-            .replace("A ", "")
-            .replace("An ", "");
-          const tempB = b
-            .replace("The ", "")
-            .replace("A ", "")
-            .replace("An ", "");
-          if (tempA > tempB) {
-            return 1;
-          } else {
-            return -1;
-          }
+          // const tempA = a
+          //   .replace("The ", "")
+          //   .replace("A ", "")
+          //   .replace("An ", "");
+          // const tempB = b
+          //   .replace("The ", "")
+          //   .replace("A ", "")
+          //   .replace("An ", "");
+          // if (tempA > tempB) {
+          //   return 1;
+          // } else {
+          //   return -1;
+          // }
+          return stripArticles(a) > stripArticles(b) ? 1 : -1;
         })
         .map((band) => {
           return `<li>${band}</li>`;
         })
         .join(" ");
+
+      function stripArticles(bandName) {
+        // ^	Start of string or start of line depending on multiline mode.
+        // ( … )	Capturing group
+        // The i modifier is used to perform case-insensitive matching.
+        return bandName.replace(/^(The |a |an )/i, "").trim();
+      }
     </script>
   </body>
 </html>
