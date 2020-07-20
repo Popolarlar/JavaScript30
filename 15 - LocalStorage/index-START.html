@@ -50,6 +50,9 @@
       <form class="add-items">
         <input type="text" name="item" placeholder="Item Name" required />
         <input type="submit" value="+ Add Item" />
+        <input type="button" name="checkAll" value="Check All" />
+        <input type="button" name="uncheckAll" value="Uncheck All" />
+        <input type="button" name="clearList" value="Clear" />
       </form>
     </div>
 
@@ -104,7 +107,6 @@
       }
 
       itemsList.addEventListener("click", toggleDone);
-
       // Event delegation
       // Key point: Instead of targeting each checkbox and bind a event listenr to it, which can causes problem when new items are added to the list, we can listen to their parent and filter the event by its source.
       function toggleDone(e) {
@@ -116,6 +118,39 @@
 
         localStorage.setItem("items", JSON.stringify(items));
         populateList(items, itemsList);
+      }
+
+      // Challenge
+      const checkAllButton = document.querySelector("input[name = checkAll]");
+      const uncheckAllButton = document.querySelector(
+        "input[name = uncheckAll]"
+      );
+      const clearButton = document.querySelector("input[name = clearList]");
+
+      checkAllButton.addEventListener("click", checkAll);
+      function checkAll() {
+        items.map((item) => {
+          item.done = true;
+        });
+
+        localStorage.setItem("items", JSON.stringify(items));
+        populateList(items, itemsList);
+      }
+
+      uncheckAllButton.addEventListener("click", uncheckAll);
+      function uncheckAll() {
+        items.map((item) => {
+          item.done = false;
+        });
+
+        localStorage.setItem("items", JSON.stringify(items));
+        populateList(items, itemsList);
+      }
+
+      clearButton.addEventListener("click", clearList);
+      function clearList() {
+        localStorage.removeItem("items");
+        populateList([], itemsList);
       }
 
       // Update the list when page load
