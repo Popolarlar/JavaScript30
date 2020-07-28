@@ -31,7 +31,7 @@
 
     <script>
       const msg = new SpeechSynthesisUtterance();
-      console.log(msg);
+      // console.log(msg);
 
       let voices = [];
       const voicesDropdown = document.querySelector('[name="voice"]');
@@ -54,6 +54,7 @@
         // Put all voices into an array of options
         // JOIN!!!!!
         const voiceOptions = voices
+          .filter((voice) => voice.lang.includes("en"))
           .map((voice) => {
             return `<option value="${voice.name}">${voice.name} (${voice.lang})</option>`;
           })
@@ -67,8 +68,12 @@
       // Voice change
       voicesDropdown.addEventListener("change", handleSelectVoice);
       function handleSelectVoice(e) {
-        const name = this.options[this.selectedIndex].value;
+        // const name = this.options[this.selectedIndex].value;
+        const name = this.value;
         msg.voice = voices.find((voice) => voice.name === name);
+
+        // Replay when voice changes
+        toggle();
       }
 
       // Input change
@@ -77,15 +82,33 @@
       );
 
       function handleInputChange() {
-        msg.text = document.querySelector('[name="text"]').value;
-        msg.rate = document.querySelector('[name="rate"]').value;
-        msg.pitch = document.querySelector('[name="pitch"]').value;
+        // msg.text = document.querySelector('[name="text"]').value;
+        // msg.rate = document.querySelector('[name="rate"]').value;
+        // msg.pitch = document.querySelector('[name="pitch"]').value;
+
+        msg[this.name] = this.value;
+        toggle();
       }
 
       // Speak button
-      speakButton.addEventListener("click", () => speechSynthesis.speak(msg));
+      // speakButton.addEventListener("click", () => speechSynthesis.speak(msg));
+      speakButton.addEventListener("click", toggle);
       // Stop button
-      stopButton.addEventListener("click", () => speechSynthesis.cancel());
+      // stopButton.addEventListener("click", () => speechSynthesis.cancel());
+      // WRONG WAY!!!!!
+      // stopButton.addEventListener("click", toggle(false));
+
+      // Right way
+      // stopButton.addEventListener("click", toggle.bind(null, false));
+      stopButton.addEventListener("click", () => toggle(false));
+
+      function toggle(startOver = true) {
+        speechSynthesis.cancel();
+
+        if (startOver) {
+          speechSynthesis.speak(msg);
+        }
+      }
     </script>
   </body>
 </html>
