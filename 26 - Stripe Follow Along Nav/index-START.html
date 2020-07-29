@@ -6,6 +6,7 @@
   </head>
   <body>
     <h2>Cool</h2>
+
     <nav class="top">
       <div class="dropdownBackground">
         <span class="arrow"></span>
@@ -261,46 +262,77 @@
     </style>
 
     <script>
-      const nav = document.querySelector(".cool");
+      const nav = document.querySelector(".top");
       const dropdownbg = document.querySelector(".dropdownBackground");
       const listItems = document.querySelectorAll(".cool > li");
 
-      // When list item on click
-      listItems.forEach((item) => {
-        item.addEventListener("click", handleItemClick);
-      });
+      // // When list item on click
+      // listItems.forEach((item) => {
+      //   item.addEventListener("click", handleItemClick);
+      // });
 
-      // Show the dropdown
-      // Show the dropdown Background based on the dropdown position & size
-      function handleItemClick() {
-        listItems.forEach((item) => {
-          item.classList.remove("trigger-enter", "trigger-enter-active");
-        });
+      // // Show the dropdown
+      // // Show the dropdown Background based on the dropdown position & size
+      // function handleItemClick() {
+      //   listItems.forEach((item) => {
+      //     item.classList.remove("trigger-enter", "trigger-enter-active");
+      //   });
+
+      //   const dropdown = this.querySelector(".dropdown");
+      //   this.classList.add("trigger-enter");
+      //   this.classList.add("trigger-enter-active");
+      //   resizeBg(dropdown);
+      //   // dropdownbg.classList.add("open");
+      // }
+
+      // function resizeBg(dropdown) {
+      //   dropdownbg.classList.remove("open");
+
+      //   // Distance to the window
+      //   const { width, height, top, left } = dropdown.getBoundingClientRect();
+
+      //   // Distance to its parent element
+      //   dropdownbg.style = `width:${width}px; height:${height}px; left:${left}px; top:${
+      //     top - nav.offsetHeight
+      //   }px;`;
+
+      //   dropdownbg.classList.add("open");
+      // }
+
+      // window.addEventListener("resize", () =>
+      //   resizeBg(document.querySelector(".trigger-enter-active .dropdown"))
+      // );
+
+      function handleEnter() {
+        this.classList.add("trigger-enter");
+        setTimeout(() => {
+          this.classList.contains("trigger-enter") &&
+            this.classList.add("trigger-enter-active");
+        }, 150);
 
         const dropdown = this.querySelector(".dropdown");
-        this.classList.add("trigger-enter");
-        this.classList.add("trigger-enter-active");
-        resizeBg(dropdown);
-        // dropdownbg.classList.add("open");
-      }
-
-      function resizeBg(dropdown) {
-        dropdownbg.classList.remove("open");
-
-        // Distance to the window
-        const { width, height, top, left } = dropdown.getBoundingClientRect();
-
-        // Distance to its parent element
-        dropdownbg.style = `width:${width}px; height:${height}px; left:${left}px; top:${
-          top - nav.offsetHeight
-        }px;`;
-
+        resizeBackground(dropdown);
         dropdownbg.classList.add("open");
       }
 
-      window.addEventListener("resize", () =>
-        resizeBg(document.querySelector(".trigger-enter-active .dropdown"))
-      );
+      function handleLeave() {
+        this.classList.remove("trigger-enter", "trigger-enter-active");
+        dropdownbg.classList.remove("open");
+      }
+
+      function resizeBackground(dropdown) {
+        const { width, height, top, left } = dropdown.getBoundingClientRect();
+        const { top: navTop, left: navLeft } = nav.getBoundingClientRect();
+
+        dropdownbg.style = `width:${width}px; height:${height}px; left:${
+          left - navLeft
+        }px; top:${top - navTop}px;`;
+      }
+
+      listItems.forEach((item) => {
+        item.addEventListener("mouseenter", handleEnter);
+        item.addEventListener("mouseleave", handleLeave);
+      });
     </script>
   </body>
 </html>
