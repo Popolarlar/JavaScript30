@@ -279,6 +279,13 @@
 
         const dropdown = this.querySelector(".dropdown");
         this.classList.add("trigger-enter");
+        this.classList.add("trigger-enter-active");
+        resizeBg(dropdown);
+        // dropdownbg.classList.add("open");
+      }
+
+      function resizeBg(dropdown) {
+        dropdownbg.classList.remove("open");
 
         // Distance to the window
         const { width, height, top, left } = dropdown.getBoundingClientRect();
@@ -288,9 +295,12 @@
           top - nav.offsetHeight
         }px;`;
 
-        this.classList.add("trigger-enter-active");
         dropdownbg.classList.add("open");
       }
+
+      window.addEventListener("resize", () =>
+        resizeBg(document.querySelector(".trigger-enter-active .dropdown"))
+      );
     </script>
   </body>
 </html>
