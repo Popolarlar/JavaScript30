@@ -1,20 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Video Speed Scrubber</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-  <div class="wrapper">
-    <video class="flex" width="765" height="430" src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" loop controls></video>
-    <div class="speed">
-      <div class="speed-bar">1×</div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Video Speed Scrubber</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <video
+        class="flex"
+        width="765"
+        height="430"
+        src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4"
+        loop
+        controls
+      ></video>
+      <div class="speed">
+        <div class="speed-bar">1×</div>
+      </div>
     </div>
-  </div>
 
-<script>
-</script>
-</body>
+    <script>
+      const speed = document.querySelector(".speed");
+      const video = document.querySelector(".flex");
+      const bar = document.querySelector(".speed-bar");
+      const fullBarSize = speed.offsetHeight;
+      let isDown = false;
+
+      speed.addEventListener("mousedown", handleMouseDown);
+      speed.addEventListener("mousemove", handleMouseMove);
+      speed.addEventListener("mouseleave", handleMouseMove);
+      speed.addEventListener("mouseup", handleMouseUp);
+
+      function handleMouseDown() {
+        isDown = true;
+      }
+
+      function handleMouseMove(e) {
+        if (!isDown) {
+          return;
+        }
+
+        const y = e.pageY - e.target.getBoundingClientRect().top;
+        const percentage = y / fullBarSize;
+        bar.style.height = `${percentage * 100}%`;
+
+        const updatedSpeed = Math.round(20 * percentage) / 10;
+        video.playbackRate = updatedSpeed;
+        bar.textContent = `${updatedSpeed}×`;
+      }
+
+      function handleMouseUp(e) {
+        isDown = false;
+      }
+
+      // offsetX and offsetY are relative to the parent container, whereas pageX and pageY are relative to the document.
+    </script>
+  </body>
 </html>
