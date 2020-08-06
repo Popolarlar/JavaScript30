@@ -14,7 +14,7 @@ buttons.forEach((button) => {
 
 customForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const sec = customInput.value * 60;
+  const sec = customInput.value.replace(/\D/g, "") * 60;
   timer(sec);
   customForm.reset();
 });
