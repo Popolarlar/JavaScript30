@@ -25,6 +25,8 @@
       const video = document.querySelector(".flex");
       const bar = document.querySelector(".speed-bar");
       const fullBarSize = speed.offsetHeight;
+      const min = 0.4;
+      const max = 4;
       let isDown = false;
 
       speed.addEventListener("mousedown", handleMouseDown);
@@ -41,11 +43,12 @@
           return;
         }
 
-        const y = e.pageY - e.target.getBoundingClientRect().top;
+        // const y = e.pageY - e.target.getBoundingClientRect().top;
+        const y = e.pageY - this.offsetTop;
         const percentage = y / fullBarSize;
-        bar.style.height = `${percentage * 100}%`;
+        bar.style.height = `${Math.round(percentage * 100)}%`;
 
-        const updatedSpeed = Math.round(20 * percentage) / 10;
+        const updatedSpeed = ((max - min) * percentage + min).toFixed(2);
         video.playbackRate = updatedSpeed;
         bar.textContent = `${updatedSpeed}×`;
       }
