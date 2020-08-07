@@ -11,21 +11,25 @@ html {
   font-family: sans-serif;
 }
 
-.keys {
+.container {
+  min-height: 100vh;
+  padding: 5%;
   display: flex;
-  /* flex: 1; */
-  /* min-height: 100vh; */
-  align-items: center;
-  justify-content: center;
-  flex-flow: row wrap;
+  flex-direction: column;
 }
 
 .try {
   color: white;
   font-size: 5rem;
-  text-shadow: 0 0 0.5rem black;
-  width: 100%;
   text-align: center;
+  padding-bottom: 5rem;
+}
+
+.keys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
 }
 
 .key {
