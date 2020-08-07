@@ -39,45 +39,64 @@
       const holes = document.querySelectorAll(".hole");
       const scoreBoard = document.querySelector(".score");
       const moles = document.querySelectorAll(".mole");
-      let isPlaying = false;
+      let timeUp = false;
+      let lastHole;
+      let score = 0;
 
       function startGame() {
-        isPlaying = true;
-        const max = holes.length;
-        let secondsLeft = 10;
+        score = 0;
+        timeUp = false;
+        scoreBoard.textContent = score;
 
-        const timer = setInterval(() => {
-          if (secondsLeft <= 0) {
-            clearInterval(timer);
-            isPlaying = false;
-            return;
-          }
+        peep();
 
-          showMole(getRandomInt(max));
-          secondsLeft -= 0.5;
-        }, 500);
+        // Run for 10 seconds
+        setTimeout(() => {
+          timeUp = true;
+        }, 10000);
       }
 
-      function getRandomInt(max) {
-        return Math.floor(Math.random() * Math.floor(max));
+      function randomTime(min, max) {
+        return Math.random() * (max - min) + min;
       }
 
-      function showMole(index) {
-        holes.forEach((hole) => {
+      function randomHole(holes) {
+        const index = Math.floor(Math.random() * holes.length);
+        const hole = holes[index];
+        if (hole === lastHole) {
+          return randomHole(holes);
+        }
+        lastHole = hole;
+        console.log(lastHole);
+        return hole;
+      }
+
+      function peep() {
+        const time = randomTime(200, 1000);
+        const hole = randomHole(holes);
+        hole.classList.add("up");
+        setTimeout(() => {
           hole.classList.remove("up");
-        });
-
-        holes[index].classList.add("up");
+          if (!timeUp) {
+            peep();
+          }
+        }, time);
       }
 
       moles.forEach((mole) => {
-        mole.addEventListener("click", whackCount);
+        mole.addEventListener("click", bonk);
       });
 
-      function whackCount() {
-        if (isPlaying) {
-          const score = Number(scoreBoard.textContent);
-          scoreBoard.textContent = score + 1;
+      function bonk(e) {
+        // Fake click
+        if (!e.isTrusted) {
+          return;
+        }
+
+        if (!timeUp) {
+          score++;
+          this.classList.remove("up");
+          scoreBoard.textContent = score;
         }
       }
     </script>
