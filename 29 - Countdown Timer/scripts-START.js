@@ -12,11 +12,13 @@ buttons.forEach((button) => {
   });
 });
 
-customForm.addEventListener("submit", (e) => {
+customForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  const sec = customInput.value.replace(/\D/g, "") * 60;
-  timer(sec);
-  customForm.reset();
+  const sec = this.minutes.value.replace(/\D/g, "") * 60;
+  if (sec > 0) {
+    timer(sec);
+  }
+  this.reset();
 });
 
 function timer(seconds) {
@@ -29,15 +31,14 @@ function timer(seconds) {
   displayTimeLeft(seconds);
 
   // Display end time
-  const end = new Date(then);
-  endTime.textContent = `${end.getHours()}:${end.getMinutes()}`;
+  displayEndTime(then);
 
   // Every second, display the amount of time left
   countdown = setInterval(() => {
     const secondsLeft = Math.round((then - Date.now()) / 1000);
 
     // Stop checksum
-    if (secondsLeft < 0) {
+    if (secondsLeft <= 0) {
       clearInterval(countdown);
     }
 
@@ -49,5 +50,17 @@ function timer(seconds) {
 function displayTimeLeft(seconds) {
   let sec = seconds % 60;
   const min = (seconds - sec) / 60;
-  timeLeft.textContent = `${min}:${sec}`;
+  const display = `${min}:${sec < 10 ? "0" : ""}${sec}`;
+  timeLeft.textContent = display;
+  document.title = display;
+}
+
+function displayEndTime(timeStamp) {
+  const end = new Date(timeStamp);
+  const adjustedHour =
+    end.getHours() > 12 ? end.getHours() - 12 : end.getHours();
+  const adjustedMinute =
+    end.getMinutes() < 10 ? "0" + end.getMinutes() : end.getMinutes();
+
+  endTime.textContent = `Be Back at ${adjustedHour}:${adjustedMinute}`;
 }
