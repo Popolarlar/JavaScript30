@@ -3,17 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <title>Hold Shift to Check Multiple Checkboxes</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <style>
       html {
-        font-family: "Courier New", Courier, monospace;
-        background: #f5cae5;
+        font-size: 20px;
+        background: #f0efeb;
+        color: #6b6b6b;
+      }
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Recursive", serif;
+      }
+
+      .container {
+        min-height: 100vh;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+      }
+
+      .title {
+        font-size: 2rem;
+        text-align: center;
+        padding-bottom: 1rem;
       }
 
       .inbox {
         max-width: 400px;
-        margin: 50px auto;
+        /* margin: 50px auto; */
         /* margin: auto - the browser calculates the margin */
         background: white;
         border-radius: 5px;
@@ -59,45 +86,47 @@
    When a user clicks a checkbox, holds Shift, and then clicks another checkbox a few rows down, all the checkboxes inbetween those two checkboxes should be checked.
 
   -->
-    <div class="inbox">
-      <div class="item">
-        <input type="checkbox" />
-        <p>This is an inbox layout.</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Check one item</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Hold down your Shift key</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Check a lower item</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Everything in between should also be set to checked</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Try to do it without any libraries</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Just regular JavaScript</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Good Luck!</p>
-      </div>
-      <div class="item">
-        <input type="checkbox" />
-        <p>Don't forget to tweet your result!</p>
+    <div class="container">
+      <div class="title">Hold shift key to multi-select</div>
+      <div class="inbox">
+        <div class="item">
+          <input type="checkbox" />
+          <p>This is an inbox layout.</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Check one item</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Hold down your Shift key</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Check a lower item</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Everything in between should also be set to checked</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Try to do it without any libraries</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Just regular JavaScript</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Good Luck!</p>
+        </div>
+        <div class="item">
+          <input type="checkbox" />
+          <p>Don't forget to tweet your result!</p>
+        </div>
       </div>
     </div>
-
     <script>
       const checkBoxes = document.querySelectorAll("input[type=checkbox]");
       let lastChecked;

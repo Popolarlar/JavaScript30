@@ -4,34 +4,34 @@
     <meta charset="UTF-8" />
     <title>Speech Synthesis</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Pacifico"
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
       rel="stylesheet"
-      type="text/css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="voiceinator">
-      <h1>The Voiceinator 5000</h1>
+    <div class="container">
+      <div class="voiceinator">
+        <h1>The Voiceinator</h1>
 
-      <select name="voice" id="voices">
-        <option value="">Select A Voice</option>
-      </select>
+        <select name="voice" id="voices">
+          <option value="">Select A Voice</option>
+        </select>
 
-      <label for="rate">Rate:</label>
-      <input name="rate" type="range" min="0" max="3" value="1" step="0.1" />
+        <label for="rate">Rate:</label>
+        <input name="rate" type="range" min="0" max="3" value="1" step="0.1" />
 
-      <label for="pitch">Pitch:</label>
+        <label for="pitch">Pitch:</label>
 
-      <input name="pitch" type="range" min="0" max="2" step="0.1" />
-      <textarea name="text">Hello! I love JavaScript 👍</textarea>
-      <button id="stop">Stop!</button>
-      <button id="speak">Speak</button>
+        <input name="pitch" type="range" min="0" max="2" step="0.1" />
+        <textarea name="text">Hello! I love JavaScript 👍</textarea>
+        <button id="stop">Stop!</button>
+        <button id="speak">Speak</button>
+      </div>
     </div>
 
     <script>
       const msg = new SpeechSynthesisUtterance();
-      // console.log(msg);
 
       let voices = [];
       const voicesDropdown = document.querySelector('[name="voice"]');
@@ -49,7 +49,6 @@
       function populateVoices() {
         // Get supported voices from OS, browser
         voices = this.getVoices();
-        // console.log(voices);
 
         // Put all voices into an array of options
         // JOIN!!!!!
@@ -68,7 +67,6 @@
       // Voice change
       voicesDropdown.addEventListener("change", handleSelectVoice);
       function handleSelectVoice(e) {
-        // const name = this.options[this.selectedIndex].value;
         const name = this.value;
         msg.voice = voices.find((voice) => voice.name === name);
 
@@ -91,15 +89,15 @@
       }
 
       // Speak button
-      // speakButton.addEventListener("click", () => speechSynthesis.speak(msg));
       speakButton.addEventListener("click", toggle);
       // Stop button
-      // stopButton.addEventListener("click", () => speechSynthesis.cancel());
+
       // WRONG WAY!!!!!
       // stopButton.addEventListener("click", toggle(false));
 
       // Right way
       // stopButton.addEventListener("click", toggle.bind(null, false));
+
       stopButton.addEventListener("click", () => toggle(false));
 
       function toggle(startOver = true) {

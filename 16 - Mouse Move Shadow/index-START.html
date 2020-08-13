@@ -3,39 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <title>Mouse Shadow</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="hero">
-      <h1 contenteditable>🔥WOAH!</h1>
+    <div class="container">
+      <h1 contenteditable>♡Move♡</h1>
     </div>
 
     <style>
       html {
-        color: black;
-        font-family: sans-serif;
+        font-size: 20px;
+        background: #f0efeb;
+        color: #6a6a6a;
+        box-sizing: border-box;
       }
 
-      body {
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body,
+      html {
         margin: 0;
+        padding: 0;
+        font-family: "Recursive", serif;
       }
 
-      .hero {
+      .container {
         min-height: 100vh;
+        padding: 5%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        color: black;
+        justify-content: center;
       }
 
       h1 {
-        text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+        /* text-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2); */
         font-size: 100px;
       }
     </style>
 
     <script>
-      const hero = document.querySelector(".hero");
+      const hero = document.querySelector(".container");
       const text = hero.querySelector("h1");
       const walk = 200;
       hero.addEventListener("mousemove", handleMouseMove);
@@ -54,15 +69,8 @@
 
         const xWalk = Math.round((x / width) * walk - walk / 2);
         const yWalk = Math.round((y / height) * walk - walk / 2);
-        console.log(width, height, x, y, xWalk, yWalk);
         text.style.textShadow = `
-        ${xWalk * -1}px ${
-          yWalk * -1
-        }px 5px rgba(0, 0, 0, 0.2), ${xWalk}px ${yWalk}px 5px rgba(200, 0, 0, 0.2), ${
-          yWalk * -1
-        }px ${xWalk}px 5px rgba(0, 200, 0, 0.2), ${yWalk}px ${
-          xWalk * -1
-        }px 5px rgba(0, 0, 200, 0.2)`;
+        ${xWalk * -1}px ${yWalk * -1}px 5px rgba(0, 0, 0, 0.2)`;
       }
 
       // Difference between

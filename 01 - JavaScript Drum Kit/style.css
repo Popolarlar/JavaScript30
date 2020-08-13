@@ -1,14 +1,15 @@
 html {
-  font-size: 10px;
-  background: url(https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?fit=crop&w=2550&q=80)
-    bottom center;
-  background-size: cover;
+  font-size: 20px;
+  background: #f0efeb;
+  color: #6a6a6a;
+  /* background: url(https://source.unsplash.com/6v4TMhQxVJg) bottom left;
+  background-size: cover; */
 }
 body,
 html {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Recursive", serif;
 }
 
 .container {
@@ -16,13 +17,18 @@ html {
   padding: 5%;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
-.try {
-  color: white;
-  font-size: 5rem;
-  text-align: center;
-  padding-bottom: 5rem;
+.title {
+  /* color: white; */
+  font-size: 2rem;
+  padding-bottom: 1rem;
+}
+
+p {
+  /* color: white; */
+  font-size: 1rem;
 }
 
 .keys {
@@ -33,17 +39,17 @@ html {
 }
 
 .key {
-  border: 0.4rem solid white;
-  border-radius: 1.2rem;
-  margin: 1rem;
+  border: 0.2rem solid #6a6a6a;
+  border-radius: 0.6rem;
+  margin: 0.5rem;
   font-size: 1.5rem;
-  padding: 1rem 0.5rem;
+  padding: 0.5rem 0.2rem;
   transition: all 0.07s ease;
-  width: 10rem;
+  width: 4rem;
   text-align: center;
-  color: white;
-  background: rgba(0, 0, 0, 0.4);
-  text-shadow: 0 0 0.5rem black;
+  color: #6a6a6a;
+  background: rgba(0, 0, 0, 0.1);
+  /* text-shadow: 0 0 0.5rem black; */
 }
 
 .playing {
@@ -54,12 +60,13 @@ html {
 
 kbd {
   display: block;
-  font-size: 4rem;
+  font-size: 1.5rem;
+  font-family: "Recursive", serif;
 }
 
 .sound {
-  font-size: 1.2rem;
+  font-size: 0.6rem;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
-  color: #ffc600;
+  color: white;
 }

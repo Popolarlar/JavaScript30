@@ -2,129 +2,459 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Whack A Mole!</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <title>JavaScript 30 days Challenge</title>
     <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>Javascript 30 days Challenge</h1>
 
-    <li>
-      <a href="01 - JavaScript Drum Kit/index-START.html"
-        >01 - JavaScript Drum Kit</a
-      >
-    </li>
-    <li>
-      <a href="02 - JS and CSS Clock/index-START.html">02 - JS and CSS Clock</a>
-    </li>
-    <li>
-      <a href="03 - CSS Variables/index-START.html">03 - CSS Variables</a>
-    </li>
-    <li>
-      <a href="04 - Array Cardio Day 1/index-START.html"
-        >04 - Array Cardio Day 1</a
-      >
-    </li>
-    <li>
-      <a href="05 - Flex Panel Gallery/index-START.html"
-        >05 - Flex Panel Gallery</a
-      >
-    </li>
-    <li><a href="06 - Type Ahead/index-START.html">06 - Type Ahead</a></li>
-    <li>
-      <a href="07 - Array Cardio Day 2/index-START.html"
-        >07 - Array Cardio Day 2</a
-      >
-    </li>
-    <li>
-      <a href="08 - Fun with HTML5 Canvas/index-START.html"
-        >08 - Fun with HTML5 Canvas</a
-      >
-    </li>
-    <li>
-      <a href="09 - Dev Tools Domination/index-START.html"
-        >09 - Dev Tools Domination</a
-      >
-    </li>
-    <li>
-      <a href="10 - Hold Shift and Check Checkboxes/index-START.html"
-        >10 - Hold Shift and Check Checkboxes</a
-      >
-    </li>
-    <li>
-      <a href="11 - Custom Video Player/index.html">11 - Custom Video Player</a>
-    </li>
-    <li>
-      <a href="12 - Key Sequence Detection/index-START.html"
-        >12 - Key Sequence Detection</a
-      >
-    </li>
-    <li>
-      <a href="13 - Slide in on Scroll/index-START.html"
-        >13 - Slide in on Scroll</a
-      >
-    </li>
-    <li>
-      <a href="14 - JavaScript References VS Copying/index-START.html"
-        >14 - JavaScript References VS Copying</a
-      >
-    </li>
-    <li><a href="15 - LocalStorage/index-START.html">15 - LocalStorage</a></li>
-    <li>
-      <a href="16 - Mouse Move Shadow/index-START.html"
-        >16 - Mouse Move Shadow</a
-      >
-    </li>
-    <li>
-      <a href="17 - Sort Without Articles/index-START.html"
-        >17 - Sort Without Articles</a
-      >
-    </li>
-    <li>
-      <a href="18 - Adding Up Times with Reduce/index-START.html"
-        >18 - Adding Up Times with Reduce</a
-      >
-    </li>
-    <li><a href="19 - Webcam Fun/index.html">19 - Webcam Fun</a></li>
-    <li>
-      <a href="20 - Speech Detection/index-START.html">20 - Speech Detection</a>
-    </li>
-    <li><a href="21 - Geolocation/index-START.html">21 - Geolocation</a></li>
-    <li>
-      <a href="22 - Follow Along Link Highlighter/index-START.html"
-        >22 - Follow Along Link Highlighter</a
-      >
-    </li>
-    <li>
-      <a href="23 - Speech Synthesis/index-START.html">23 - Speech Synthesis</a>
-    </li>
-    <li><a href="24 - Sticky Nav/index-START.html">24 - Sticky Nav</a></li>
-    <li>
-      <a
-        href="25 - Event Capture, Propagation, Bubbling and Once/index-START.html"
-        >25 - Event Capture, Propagation, Bubbling and Once</a
-      >
-    </li>
-    <li>
-      <a href="26 - Stripe Follow Along Nav/index-START.html"
-        >26 - Stripe Follow Along Nav</a
-      >
-    </li>
-    <li>
-      <a href="27 - Click and Drag/index-START.html">27 - Click and Drag</a>
-    </li>
-    <li>
-      <a href="28 - Video Speed Controller/index-START.html"
-        >28 - Video Speed Controller</a
-      >
-    </li>
-    <li>
-      <a href="29 - Countdown Timer/index.html">29 - Countdown Timer</a>
-    </li>
-    <li><a href="30 - Whack A Mole/index-START.html">30 - Whack A Mole</a></li>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body data-spy="scroll" data-target="#navbar">
+    <div class="wrapper">
+      <!-- <nav class="nav__wrapper" id="navbar"> -->
+      <nav id="navbar">
+        <div class="nav__wrapper">
+          <ul class="nav">
+            <li role="presentation" class="active">
+              <a href="#section0">
+                <span class="nav__counter">Start</span>
+                <h3 class="nav__title">30 Day Challenge</h3>
+                <p class="nav__body">
+                  Use plain
+                  <strong>Vanilla JavaScript</strong> to build something on each
+                  day.
+                </p>
+              </a>
+            </li>
+
+            <li role="presentation">
+              <a href="#section1">
+                <span class="nav__counter">01</span>
+                <h3 class="nav__title">Drum Kit</h3>
+                <p class="nav__body">
+                  Use <strong>Audio Tag</strong> and
+                  <strong>Keyboard Events</strong> to play the sounds.
+                </p>
+              </a>
+            </li>
+
+            <li role="presentation">
+              <a href="#section2">
+                <span class="nav__counter">02</span>
+                <h3 class="nav__title">Clock</h3>
+                <p class="nav__body">
+                  Use <strong>setInterval Function</strong> and
+                  <strong>CSS transform</strong> to simulate a clock.
+                </p>
+              </a>
+            </li>
+
+            <li role="presentation">
+              <a href="#section3">
+                <span class="nav__counter">03</span>
+                <h3 class="nav__title">CSS Variables</h3>
+                <p class="nav__body">
+                  Use <strong>setProperty Function</strong> to play with
+                  <strong>CSS Cariables</strong>.
+                </p>
+              </a>
+            </li>
+
+            <li role="presentation">
+              <a href="#section4">
+                <span class="nav__counter">05</span>
+                <h3 class="nav__title">Flex Panel Gallery</h3>
+                <p class="nav__body">
+                  Use <strong>Flex Layout</strong> and
+                  <strong>Transitionend event</strong> to create animation.
+                </p>
+              </a>
+            </li>
+
+            <li role="presentation">
+              <a href="#section5">
+                <span class="nav__counter">06</span>
+                <h3 class="nav__title">City Filter</h3>
+                <p class="nav__body">
+                  Use <strong>Fetch</strong> and
+                  <strong>Array Filter</strong> to find the match cites.
+                </p>
+              </a>
+            </li>
+
+            <li role="presentation">
+              <a href="#section6">
+                <span class="nav__counter">08</span>
+                <h3 class="nav__title">Rainbow Canvas</h3>
+                <p class="nav__body">
+                  Use <strong>Canvas Tag</strong> and
+                  <strong>Mouse Events</strong> to draw.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section7">
+                <span class="nav__counter">10</span>
+                <h3 class="nav__title">Multi-Select</h3>
+                <p class="nav__body">
+                  Use <strong>checkBox</strong> and <strong>shiftKey</strong> to
+                  simulate multiple selection.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section8">
+                <span class="nav__counter">11</span>
+                <h3 class="nav__title">Video Control</h3>
+                <p class="nav__body">
+                  Use <strong>Video Tag</strong> to play, pause, skip, adjust
+                  volume/speed/fullscreen to the video.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section9">
+                <span class="nav__counter">13</span>
+                <h3 class="nav__title">Images Slide-in</h3>
+                <p class="nav__body">
+                  Use <strong>Scroll Event</strong><br />and
+                  <strong>Element Vertical Position</strong><br />to create the
+                  slide-in animation.
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="nav__wrapper--right">
+          <ul class="nav nav--right">
+            <li role="presentation">
+              <a href="#section10">
+                <span class="nav__counter">16</span>
+                <h3 class="nav__title">Mouse Shadow</h3>
+                <p class="nav__body">
+                  Use <strong>Mouse Event</strong><br />and
+                  <strong>Element Position</strong><br />to add dynamic shadow
+                  effect.
+                </p>
+              </a>
+            </li>
+            <!-- <li role="presentation">
+              <a href="#section11">
+                <span class="nav__counter">19</span>
+                <h3 class="nav__title">Webcam</h3>
+                <p class="nav__body"></p>
+              </a>
+            </li> -->
+            <li role="presentation">
+              <a href="#section12">
+                <span class="nav__counter">20</span>
+                <h3 class="nav__title">Speech Detection</h3>
+                <p class="nav__body">
+                  Use <strong>SpeechRecognition</strong><br />and
+                  <strong>Result Event</strong><br />to detect and write the
+                  speech.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section13">
+                <span class="nav__counter">23</span>
+                <h3 class="nav__title">Speech Synthesis</h3>
+                <p class="nav__body">
+                  Use <strong>SpeechSynthesisUtterance</strong><br />to generate
+                  speech from text.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section14">
+                <span class="nav__counter">24</span>
+                <h3 class="nav__title">Sticky Nav Bar</h3>
+                <p class="nav__body">
+                  Use <strong>CSS Fixed Position</strong><br />to create a
+                  smooth sticky navigation bar.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section15">
+                <span class="nav__counter">26</span>
+                <h3 class="nav__title">Follow Along Focus</h3>
+                <p class="nav__body">
+                  Use <strong>Mouse Events</strong><br />and
+                  <strong>CSS classes</strong><br />to animate a follow along
+                  dropdown background.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section16">
+                <span class="nav__counter">27</span>
+                <h3 class="nav__title">Click and Drag</h3>
+                <p class="nav__body">
+                  Use <strong>Mouse Events</strong><br />and
+                  <strong>Element scrollLeft Property</strong><br />to acheive a
+                  horizontal drag scroll.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section17">
+                <span class="nav__counter">29</span>
+                <h3 class="nav__title">Cowndown Timer</h3>
+                <p class="nav__body">
+                  Use <strong>setInterval Function</strong><br />and
+                  <strong>Date Object</strong><br />to create a custom timer.
+                </p>
+              </a>
+            </li>
+            <li role="presentation">
+              <a href="#section18">
+                <span class="nav__counter">30</span>
+                <h3 class="nav__title">Whrack A Mole</h3>
+                <p class="nav__body">
+                  Use <strong>Math.random Function</strong><br />and
+                  <strong>setTimeout Function</strong><br />to peep on random
+                  time and random hole.
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="section section0" id="section0">
+        <div class="home">
+          <h1>JavaScript 30</h1>
+
+          <!-- https://github.com/Mugilan-Codes/javascript-30 -->
+          <p>
+            This is a coding challenge given by the amazing
+            <a href="https://github.com/wesbos">WesBos</a>. The course can be
+            found <a href="https://javascript30.com/">here</a>.
+          </p>
+          <p>
+            My demo excludes excercises that are not presentable. You can find
+            all my solutions on
+            <a href="https://github.com/Popolarlar/JavaScript30">GitHub</a>.
+          </p>
+          <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section1" id="section1">
+        <iframe
+          class="preview"
+          src="01 - JavaScript Drum Kit/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section2" id="section2">
+        <iframe
+          class="preview"
+          src="02 - JS and CSS Clock/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section3" id="section3">
+        <iframe
+          class="preview"
+          src="03 - CSS Variables/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section4" id="section4">
+        <iframe
+          class="preview"
+          src="05 - Flex Panel Gallery/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section5" id="section5">
+        <iframe
+          class="preview"
+          src="06 - Type Ahead/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section6" id="section6">
+        <iframe
+          class="preview"
+          src="08 - Fun with HTML5 Canvas/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section7" id="section7">
+        <iframe
+          class="preview"
+          src="10 - Hold Shift and Check Checkboxes/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section8" id="section8">
+        <iframe
+          class="preview"
+          src="11 - Custom Video Player/index.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+
+      <section class="section section9" id="section9">
+        <iframe
+          class="preview"
+          src="13 - Slide in on Scroll/index-START.html"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section10" id="section10">
+        <iframe
+          class="preview--right"
+          src="16 - Mouse Move Shadow/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <!-- <section class="section section11" id="section11">
+        src="19 - Webcam Fun"
+        <iframe class="preview--right" scrolling="no" loading="lazy"></iframe>
+      </section> -->
+
+      <section class="section section12" id="section12">
+        <iframe
+          class="preview--right"
+          src="20 - Speech Detection/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section13" id="section13">
+        <iframe
+          class="preview--right"
+          src="23 - Speech Synthesis/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section14" id="section14">
+        <iframe
+          class="preview--right"
+          src="24 - Sticky Nav/index-START.html"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section15" id="section15">
+        <iframe
+          class="preview--right"
+          src="26 - Stripe Follow Along Nav/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section16" id="section16">
+        <iframe
+          class="preview--right"
+          src="27 - Click and Drag/index-START.html"
+          loading="lazy"
+          scrolling="no"
+        ></iframe>
+      </section>
+      <section class="section section17" id="section17">
+        <iframe
+          class="preview--right"
+          src="29 - Countdown Timer/index.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+      <section class="section section18" id="section18">
+        <iframe
+          class="preview--right"
+          src="30 - Whack A Mole/index-START.html"
+          scrolling="no"
+          loading="lazy"
+        ></iframe>
+      </section>
+    </div>
   </body>
+
+  <script>
+    let lastPage = window.location.hash.slice(8);
+
+    // SMOOTH SCROLLING SECTIONS
+    $('a[href*="#"]:not([href="#"])').click(function (e) {
+      e.preventDefault();
+      if (
+        location.pathname.replace(/^\//, "") ==
+          this.pathname.replace(/^\//, "") ||
+        location.hostname == this.hostname
+      ) {
+        var target = $(this.hash);
+        target = target.length
+          ? target
+          : $('[name="' + this.hash.slice(1) + '"]');
+        var currentPage = this.hash.slice(8);
+
+        if (target.length) {
+          if (Math.abs(currentPage - lastPage) < 6) {
+            $("html,body").animate(
+              {
+                scrollTop: target.offset().top,
+              },
+              1000
+            );
+          } else {
+            $("html,body").fadeTo(500, 0.3, () => {
+              window.location = this.href;
+              $("html,body").fadeTo(500, 1);
+            });
+          }
+          lastPage = currentPage;
+          return false;
+        }
+      }
+    });
+
+    $('[data-spy="scroll"]').on("activate.bs.scrollspy", function (e) {
+      const isTop = e.target.querySelector("a").hash.slice(8) === "0";
+      if (!isTop) {
+        $(".nav").addClass("light");
+      } else {
+        $(".nav").removeClass("light");
+      }
+    });
+
+    function redirectPage(link) {
+      $("html,body").fadeIn(1000);
+      setTimeout(function () {
+        window.location = link;
+      }, 0);
+    }
+  </script>
 </html>

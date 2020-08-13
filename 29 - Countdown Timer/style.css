@@ -1,27 +1,30 @@
 html {
+  font-size: 20px;
+  background: #f0efeb;
+  color: #6a6a6a;
   box-sizing: border-box;
-  font-size: 10px;
-  background: #8E24AA;
-  background: linear-gradient(45deg,  #42a5f5 0%,#478ed1 50%,#0d47a1 100%);
 }
 
-*, *:before, *:after {
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Recursive", serif;
+}
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
-body {
-  margin: 0;
-  text-align: center;
-  font-family: 'Inconsolata', monospace;
-}
-
-.display__time-left {
-  font-weight: 100;
-  font-size: 20rem;
-  margin: 0;
-  color: white;
-  text-shadow: 4px 4px 0 rgba(0,0,0,0.05);
-}
+/* .container {
+  min-height: 100vh;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+} */
 
 .timer {
   display: flex;
@@ -45,7 +48,8 @@ body {
 .timer__controls input {
   flex: 1;
   border: 0;
-  padding: 2rem;
+  padding: 1rem;
+  font-size: 1rem;
 }
 
 .timer__button {
@@ -53,18 +57,17 @@ body {
   border: 0;
   cursor: pointer;
   color: white;
-  font-size: 2rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  background: rgba(0,0,0,0.1);
-  border-bottom: 3px solid rgba(0,0,0,0.2);
-  border-right: 1px solid rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
   padding: 1rem;
-  font-family: 'Inconsolata', monospace;
 }
 
 .timer__button:hover,
 .timer__button:focus {
-  background: rgba(0,0,0,0.2);
+  background: rgba(0, 0, 0, 0.2);
   outline: 0;
 }
 
@@ -76,7 +79,15 @@ body {
   justify-content: center;
 }
 
-.display__end-time {
-  font-size: 4rem;
+.display__time-left {
+  font-weight: 100;
+  font-size: 10rem;
+  margin: 0;
   color: white;
+  text-shadow: 4px 4px 0 rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+.display__end-time {
+  font-size: 2rem;
+  color: #6a6a6a;
 }

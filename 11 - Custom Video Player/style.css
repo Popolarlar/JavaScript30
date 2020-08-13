@@ -1,4 +1,7 @@
 html {
+  font-size: 20px;
+  background: #f0efeb;
+  color: #6a6a6a;
   box-sizing: border-box;
 }
 
@@ -8,16 +11,24 @@ html {
   box-sizing: inherit;
 }
 
-body {
+body,
+html {
   margin: 0;
   padding: 0;
-  display: flex;
-  background: #f5cae5;
+  font-family: "Recursive", serif;
+}
+
+.container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5cae5 0%, #e79cac 100%);
-  background-size: cover;
-  align-items: center;
-  justify-content: center;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+  padding-bottom: 1rem;
 }
 
 .player {
@@ -57,7 +68,7 @@ body {
 }
 
 .player__button:focus {
-  border-color: #ffc600;
+  border-color: #6a6a6a;
 }
 
 .player__slider {
@@ -101,7 +112,7 @@ body {
 
 .progress__filled {
   width: 50%;
-  background: #f5cae5;
+  background: #6a6a6a;
   flex: 0;
   flex-basis: 50%;
 }
@@ -133,7 +144,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 15px;
   width: 15px;
   border-radius: 50px;
-  background: #f5cae5;
+  background: #6a6a6a;
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -3.5px;
@@ -141,7 +152,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]:focus::-webkit-slider-runnable-track {
-  background: #e79cac;
+  background: #6a6a6a;
 }
 
 input[type="range"]::-moz-range-track {
@@ -159,6 +170,6 @@ input[type="range"]::-moz-range-thumb {
   height: 15px;
   width: 15px;
   border-radius: 50px;
-  background: #f5cae5;
+  background: #6a6a6a;
   cursor: pointer;
 }

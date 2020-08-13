@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <title>Type Ahead 👀</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <form class="search-form">
-      <input type="text" class="search" placeholder="City or State" />
+      <input type="text" class="search" placeholder="Enter City or State" />
       <ul class="suggestions">
         <li>Filter for a city</li>
         <li>or a state</li>
@@ -22,8 +26,6 @@
       fetch(endpoint)
         .then((blob) => blob.json())
         .then((data) => cities.push(...data));
-
-      console.log(cities);
 
       const search = document.querySelector(".search");
       const suggestions = document.querySelector(".suggestions");

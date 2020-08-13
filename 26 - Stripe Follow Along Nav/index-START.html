@@ -3,135 +3,134 @@
   <head>
     <meta charset="UTF-8" />
     <title>Follow Along Nav</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h2>Cool</h2>
+    <div class="container">
+      <div class="title">Hover to see the dropdown</div>
+      <nav class="top">
+        <div class="dropdownBackground">
+          <span class="arrow"></span>
+        </div>
 
-    <nav class="top">
-      <div class="dropdownBackground">
-        <span class="arrow"></span>
-      </div>
-
-      <ul class="cool">
-        <li>
-          <a href="#">About Me</a>
-          <div class="dropdown dropdown1">
-            <div class="bio">
-              <img src="https://logo.clearbit.com/wesbos.com" />
-              <p>
-                Wes Bos sure does love web development. He teaches things like
-                JavaScript, CSS and BBQ. Wait. BBQ isn't part of web
-                development. It should be though!
-              </p>
+        <ul class="cool">
+          <li>
+            <a href="#">About Me</a>
+            <div class="dropdown dropdown1">
+              <div class="bio">
+                <img src="https://logo.clearbit.com/wesbos.com" />
+                <p>
+                  Wes Bos sure does love web development. He teaches things like
+                  JavaScript, CSS and BBQ. Wait. BBQ isn't part of web
+                  development. It should be though!
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <a href="#">Courses</a>
-          <ul class="dropdown courses">
-            <li>
-              <span class="code">RFB</span>
-              <a href="https://ReactForBeginners.com">React For Beginners</a>
-            </li>
-            <li>
-              <span class="code">ES6</span>
-              <a href="https://ES6.io">ES6 For Everyone</a>
-            </li>
-            <li>
-              <span class="code">NODE</span>
-              <a href="https://LearnNode.com">Learn Node</a>
-            </li>
-            <li>
-              <span class="code">STPU</span>
-              <a href="https://SublimeTextBook.com">Sublime Text Power User</a>
-            </li>
-            <li>
-              <span class="code">WTF</span>
-              <a href="http://Flexbox.io">What The Flexbox?!</a>
-            </li>
-            <li>
-              <span class="code">GRID</span>
-              <a href="https://CSSGrid.io">CSS Grid</a>
-            </li>
-            <li>
-              <span class="code">LRX</span>
-              <a href="http://LearnRedux.com">Learn Redux</a>
-            </li>
-            <li>
-              <span class="code">CLPU</span>
-              <a href="http://CommandLinePowerUser.com"
-                >Command Line Power User</a
-              >
-            </li>
-            <li>
-              <span class="code">MMD</span>
-              <a href="http://MasteringMarkdown.com">Mastering Markdown</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href="#">Other Links</a>
-          <ul class="dropdown dropdown3">
-            <li>
-              <a class="button" href="http://twitter.com/wesbos">Twitter</a>
-            </li>
-            <li>
-              <a class="button" href="http://facebook.com/wesbos.developer"
-                >Facebook</a
-              >
-            </li>
-            <li><a class="button" href="http://wesbos.com">Blog</a></li>
-            <li>
-              <a class="button" href="http://wesbos.com/courses"
-                >Course Catalog</a
-              >
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+          </li>
+          <li>
+            <a href="#">Courses</a>
+            <ul class="dropdown courses">
+              <li>
+                <span class="code">RFB</span>
+                <a href="https://ReactForBeginners.com">React For Beginners</a>
+              </li>
+              <li>
+                <span class="code">ES6</span>
+                <a href="https://ES6.io">ES6 For Everyone</a>
+              </li>
+              <li>
+                <span class="code">NODE</span>
+                <a href="https://LearnNode.com">Learn Node</a>
+              </li>
+              <li>
+                <span class="code">STPU</span>
+                <a href="https://SublimeTextBook.com"
+                  >Sublime Text Power User</a
+                >
+              </li>
+              <li>
+                <span class="code">WTF</span>
+                <a href="http://Flexbox.io">What The Flexbox?!</a>
+              </li>
+              <li>
+                <span class="code">GRID</span>
+                <a href="https://CSSGrid.io">CSS Grid</a>
+              </li>
+              <li>
+                <span class="code">LRX</span>
+                <a href="http://LearnRedux.com">Learn Redux</a>
+              </li>
+              <li>
+                <span class="code">CLPU</span>
+                <a href="http://CommandLinePowerUser.com"
+                  >Command Line Power User</a
+                >
+              </li>
+              <li>
+                <span class="code">MMD</span>
+                <a href="http://MasteringMarkdown.com">Mastering Markdown</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Other Links</a>
+            <ul class="dropdown dropdown3">
+              <li>
+                <a class="button" href="http://twitter.com/wesbos">Twitter</a>
+              </li>
+              <li>
+                <a class="button" href="http://facebook.com/wesbos.developer"
+                  >Facebook</a
+                >
+              </li>
+              <li><a class="button" href="http://wesbos.com">Blog</a></li>
+              <li>
+                <a class="button" href="http://wesbos.com/courses"
+                  >Course Catalog</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
 
     <style>
       html {
+        font-size: 20px;
+        background: #f0efeb;
+        color: #6a6a6a;
         box-sizing: border-box;
-        font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial,
-          sans-serif;
       }
 
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Recursive", serif;
+      }
       *,
       *:before,
       *:after {
         box-sizing: inherit;
       }
 
-      body {
-        margin: 0;
+      .container {
         min-height: 100vh;
-        background: linear-gradient(
-            45deg,
-            hsla(340, 100%, 55%, 1) 0%,
-            hsla(340, 100%, 55%, 0) 70%
-          ),
-          linear-gradient(
-            135deg,
-            hsla(225, 95%, 50%, 1) 10%,
-            hsla(225, 95%, 50%, 0) 80%
-          ),
-          linear-gradient(
-            225deg,
-            hsla(140, 90%, 50%, 1) 10%,
-            hsla(140, 90%, 50%, 0) 80%
-          ),
-          linear-gradient(
-            315deg,
-            hsla(35, 95%, 55%, 1) 100%,
-            hsla(35, 95%, 55%, 0) 70%
-          );
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
       }
 
-      h2 {
-        margin-top: 0;
-        padding-top: 0.8em;
+      .title {
+        font-size: 2rem;
+        text-align: center;
+        padding-bottom: 1rem;
       }
 
       nav {
@@ -140,13 +139,13 @@
       }
 
       .cool > li > a {
-        color: yellow;
+        color: white;
         text-decoration: none;
-        font-size: 20px;
+        font-size: 1rem;
         background: rgba(0, 0, 0, 0.2);
-        padding: 10px 20px;
+        padding: 0.5rem 1rem;
         display: inline-block;
-        margin: 20px;
+        margin: 1rem;
         border-radius: 5px;
       }
 
@@ -265,43 +264,6 @@
       const nav = document.querySelector(".top");
       const dropdownbg = document.querySelector(".dropdownBackground");
       const listItems = document.querySelectorAll(".cool > li");
-
-      // // When list item on click
-      // listItems.forEach((item) => {
-      //   item.addEventListener("click", handleItemClick);
-      // });
-
-      // // Show the dropdown
-      // // Show the dropdown Background based on the dropdown position & size
-      // function handleItemClick() {
-      //   listItems.forEach((item) => {
-      //     item.classList.remove("trigger-enter", "trigger-enter-active");
-      //   });
-
-      //   const dropdown = this.querySelector(".dropdown");
-      //   this.classList.add("trigger-enter");
-      //   this.classList.add("trigger-enter-active");
-      //   resizeBg(dropdown);
-      //   // dropdownbg.classList.add("open");
-      // }
-
-      // function resizeBg(dropdown) {
-      //   dropdownbg.classList.remove("open");
-
-      //   // Distance to the window
-      //   const { width, height, top, left } = dropdown.getBoundingClientRect();
-
-      //   // Distance to its parent element
-      //   dropdownbg.style = `width:${width}px; height:${height}px; left:${left}px; top:${
-      //     top - nav.offsetHeight
-      //   }px;`;
-
-      //   dropdownbg.classList.add("open");
-      // }
-
-      // window.addEventListener("resize", () =>
-      //   resizeBg(document.querySelector(".trigger-enter-active .dropdown"))
-      // );
 
       function handleEnter() {
         this.classList.add("trigger-enter");

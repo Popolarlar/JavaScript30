@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <title>HTML5 Canvas</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="container">
-      <h1>Rainbow Crayon</h1>
+      <div class="title">Be the next Picasso</div>
       <div class="strokeVariable">
         <input type="range" id="strokeWidth" min="1" max="100" value="50" />
-        <input type="color" id="strokeColor" value="#f5cae5" />
+        <input type="color" id="strokeColor" value="#6a6a6a" />
         <input type="button" id="strokeRainbow" value="Rainbow" />
         <input type="button" id="clear" value="Clear" />
       </div>
-      <canvas id="draw" width="800" height="800"></canvas>
+      <canvas id="draw" width="500" height="500"></canvas>
     </div>
     <script>
       const canvas = document.querySelector("#draw");
@@ -25,7 +29,7 @@
       // MJ: Create a drawing object
       // https://www.w3schools.com/graphics/canvas_reference.asp
       const ctx = canvas.getContext("2d");
-      ctx.strokeStyle = "#f5cae5";
+      ctx.strokeStyle = "#6a6a6a";
       ctx.lineJoin = "round";
       ctx.lineCap = "round";
       ctx.lineWidth = 50;
@@ -118,9 +122,31 @@
     </script>
 
     <style>
-      html,
-      body {
+      html {
+        font-size: 10px;
+        background: #f0efeb;
+        color: #6b6b6b;
+      }
+
+      body,
+      html {
         margin: 0;
+        padding: 0;
+        font-family: "Recursive", serif;
+      }
+
+      .container {
+        min-height: 100vh;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+      }
+      .title {
+        font-size: 4rem;
+        text-align: center;
+        padding-bottom: 1rem;
       }
 
       input {
@@ -153,18 +179,6 @@
         background: transparent;
         border-color: transparent;
         color: transparent;
-      }
-
-      .container {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
-        align-items: center;
-        padding: 5%;
-        color: white;
-        background-color: #f5cae5;
-        padding: 12px 12px;
-        overflow: hidden;
       }
 
       canvas {
@@ -200,7 +214,7 @@
         width: 25px; /* Set a specific slider handle width */
         height: 25px; /* Slider handle height */
         border-radius: 50%;
-        background: #f5cae5;
+        background: #6b6b6b;
         border: 3px solid white;
         box-shadow: 2px 2px 4px 0px rgb(139, 134, 134);
         cursor: pointer; /* Cursor on hover */
@@ -210,7 +224,7 @@
         width: 25px; /* Set a specific slider handle width */
         height: 25px; /* Slider handle height */
         border-radius: 50%;
-        background: #f5cae5;
+        background: #6b6b6b;
         border: 3px solid white;
         box-shadow: 2px 2px 4px 0px rgb(139, 134, 134);
         cursor: pointer; /* Cursor on hover */
@@ -232,13 +246,13 @@
 
       #strokeRainbow {
         color: white;
-        background: linear-gradient(to right, red, yellow, blue);
+        background: linear-gradient(to right, #ee6352, #fac05e, #3fa7d6);
         border: 3px solid white;
       }
 
       #clear {
         color: white;
-        background: none;
+        background: #6b6b6b;
         border: 3px solid white;
       }
     </style>

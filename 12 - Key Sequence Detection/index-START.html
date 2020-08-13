@@ -7,11 +7,52 @@
       type="text/javascript"
       src="https://www.cornify.com/js/cornify.js"
     ></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
+    <div class="container">
+      <div class="title">Type "unicorn" on your keyboard</div>
+    </div>
+    <style>
+      html {
+        font-size: 20px;
+        background: #f0efeb;
+        color: #6a6a6a;
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Recursive", serif;
+      }
+
+      .container {
+        min-height: 100vh;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title {
+        font-size: 2rem;
+        text-align: center;
+        padding-bottom: 1rem;
+      }
+    </style>
     <script>
       const pressed = [];
-      const secretCode = "warren";
+      const secretCode = "unicorn";
       window.addEventListener("keyup", (e) => {
         pressed.push(e.key);
 
@@ -25,10 +66,7 @@
           pressed.length - secretCode.length
         );
 
-        console.log(pressed);
-
         if (pressed.join("").includes(secretCode)) {
-          console.log("You found me!!");
           cornify_add();
         }
       });

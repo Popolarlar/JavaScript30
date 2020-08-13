@@ -3,40 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <title>JS + CSS Clock</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="clock">
-      <div class="clock-face">
-        <div class="hand hour-hand"></div>
-        <div class="hand min-hand"></div>
-        <div class="hand second-hand"></div>
-        <span class="dot"></span>
+    <div class="container">
+      <div class="clock">
+        <div class="clock-face">
+          <div class="hand hour-hand"></div>
+          <div class="hand min-hand"></div>
+          <div class="hand second-hand"></div>
+          <span class="dot"></span>
+        </div>
       </div>
     </div>
 
     <style>
       html {
-        background: whitesmoke
-          url(https://images.unsplash.com/photo-1499377193864-82682aefed04?w=1522&q=80);
-        background-size: cover;
-        font-family: "helvetica neue";
-        text-align: center;
-        font-size: 15px;
+        font-size: 20px;
+        background: #f0efeb;
+        color: #6a6a6a;
+        /* background: #f0efeb url(https://source.unsplash.com/BXOXnQ26B7o); */
       }
 
-      body {
+      body,
+      html {
         margin: 0;
-        font-size: 2rem;
-        display: flex;
-        flex: 1;
+        padding: 0;
+        font-family: "Recursive", serif;
+      }
+
+      .container {
+        text-align: center;
         min-height: 100vh;
-        align-items: center;
+        padding: 5%;
+        display: flex;
+        flex-direction: column;
       }
 
       .clock {
-        width: 30rem;
-        height: 30rem;
-        border: 20px solid black;
+        width: 15rem;
+        height: 15rem;
+        border: 20px solid #6a6a6a;
         border-radius: 50%;
         margin: 50px auto;
         position: relative;
@@ -57,7 +67,7 @@
       .hand {
         width: 50%;
         height: 7px;
-        background: black;
+        background: white;
         position: absolute;
         top: 50%;
         /* Start from 12 */
@@ -94,7 +104,7 @@
         height: 3%;
         border-radius: 100px;
         background: white;
-        border: 2px solid black;
+        border: 2px solid #6a6a6a;
         border-radius: 100px;
         z-index: 1;
       }
@@ -144,8 +154,6 @@
         secondHand.style.transform = `rotate(${secondsDeg}deg)`;
         minuteHand.style.transform = `rotate(${minutesDeg}deg)`;
         hourHand.style.transform = `rotate(${hoursDeg}deg)`;
-
-        console.log(`It is ${hours}:${minutes}:${seconds}`);
       }
     </script>
   </body>
