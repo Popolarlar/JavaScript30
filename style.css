@@ -52,7 +52,7 @@ section:nth-child(4n + 4) {
 .home {
   width: 50%;
   height: 65%;
-  color: #2f4858;
+  color: #264653;
 }
 
 .home h1 {
@@ -94,10 +94,12 @@ section:nth-child(4n + 4) {
 
 .nav {
   margin: 0 0 100px 30px;
+  padding-inline-start: 30px;
 }
 
 .nav--right {
   margin: 0 30px 100px 0px;
+  padding-inline-end: 30px;
   text-align: end;
 }
 
@@ -165,8 +167,8 @@ section:nth-child(4n + 4) {
 .nav li:after {
   content: "";
   display: block;
-  border-left: 2px solid #2f4858;
-  border-top: 2px solid #2f4858;
+  border-left: 2px solid #6a6a6a;
+  border-top: 2px solid #6a6a6a;
   height: 250px;
   width: 20px;
   position: absolute;
@@ -182,7 +184,7 @@ section:nth-child(4n + 4) {
 .nav li a {
   display: block;
   padding: 0;
-  color: #2f4858;
+  color: #6a6a6a;
   -webkit-transition: all 0.15s ease-out;
   transition: all 0.15s ease-out;
 }
@@ -231,8 +233,8 @@ section:nth-child(4n + 4) {
   content: "";
   display: block;
   border-left: none;
-  border-right: 2px solid #2f4858;
-  border-top: 2px solid #2f4858;
+  border-right: 2px solid #6a6a6a;
+  border-top: 2px solid #6a6a6a;
   height: 250px;
   width: 20px;
   position: absolute;
